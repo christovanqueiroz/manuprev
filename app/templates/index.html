@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Manutenção Preventiva</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Sistema de Manutenção Preventiva</h1>
+      <p>Gestão de equipamentos, preventivas, corretivas e indicadores (MTBF/MTTR).</p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Cadastro de Equipamentos</h2>
+        <form id="equipment-form" class="grid-form">
+          <input name="name" placeholder="Nome do equipamento" required />
+          <input name="category" placeholder="Categoria" required />
+          <input name="serial_number" placeholder="Nº de série" required />
+          <input name="location" placeholder="Localização" required />
+          <button type="submit">Cadastrar equipamento</button>
+        </form>
+        <div id="equipment-feedback" class="feedback"></div>
+        <ul id="equipment-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Plano Preventivo</h2>
+        <form id="plan-form" class="grid-form">
+          <input name="equipment_id" type="number" placeholder="ID do equipamento" required />
+          <input name="frequency_days" type="number" placeholder="Frequência (dias)" required />
+          <input name="next_due_date" type="date" required />
+          <textarea name="activities" placeholder="Atividades preventivas" required></textarea>
+          <label class="checkbox"><input name="active" type="checkbox" checked /> Ativo</label>
+          <button type="submit">Cadastrar plano</button>
+        </form>
+        <div id="plan-feedback" class="feedback"></div>
+        <ul id="plan-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Registro de Corretivas</h2>
+        <form id="corrective-form" class="grid-form">
+          <input name="equipment_id" type="number" placeholder="ID do equipamento" required />
+          <input name="description" placeholder="Descrição da falha" required />
+          <input name="failure_start" type="datetime-local" required />
+          <input name="repair_end" type="datetime-local" required />
+          <input name="root_cause" placeholder="Causa raiz" required />
+          <textarea name="actions_taken" placeholder="Ações executadas" required></textarea>
+          <button type="submit">Registrar corretiva</button>
+        </form>
+        <div id="corrective-feedback" class="feedback"></div>
+        <ul id="corrective-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Indicadores</h2>
+        <div class="indicator-controls">
+          <input id="indicator-equipment-id" type="number" placeholder="Filtrar por ID (opcional)" />
+          <button id="indicator-load" type="button">Carregar indicadores</button>
+        </div>
+        <ul id="indicator-list" class="list"></ul>
+      </section>
+
+      <section class="card card-actions">
+        <h2>Relatórios</h2>
+        <a class="btn" href="/reports/pdf" target="_blank" rel="noopener noreferrer">Baixar relatório PDF</a>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

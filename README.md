@@ -30,6 +30,21 @@ python -m app.main
 
 Servidor disponível em `http://localhost:5000`.
 
+
+## Interface Web
+
+Após iniciar a aplicação, acesse no navegador:
+
+- `http://localhost:5000/`
+
+A tela web permite:
+
+- Cadastrar equipamentos
+- Cadastrar plano preventivo
+- Registrar corretivas
+- Visualizar indicadores (MTBF/MTTR)
+- Baixar relatório PDF
+
 ## Endpoints principais
 
 ### Equipamentos

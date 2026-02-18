@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from io import BytesIO
 
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, jsonify, render_template, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -93,6 +93,11 @@ def create_app() -> Flask:
 
     with app.app_context():
         db.create_all()
+
+
+    @app.get("/")
+    def index():
+        return render_template("index.html")
 
     @app.post("/equipments")
     def create_equipment():
